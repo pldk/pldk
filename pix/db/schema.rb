@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818171732) do
+ActiveRecord::Schema.define(version: 20150819131822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,9 +39,31 @@ ActiveRecord::Schema.define(version: 20150818171732) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
+    t.string   "name"
+    t.string   "city"
+    t.integer  "age"
+    t.string   "sex"
+    t.integer  "height"
+    t.integer  "weight"
+    t.string   "eyes"
+    t.string   "hair"
+    t.string   "disponibility"
+    t.string   "sexual_preference"
+    t.integer  "phone_number"
+    t.string   "website"
+    t.boolean  "GFE"
+    t.boolean  "couple"
+    t.boolean  "tantra"
+    t.boolean  "erotic_massage"
+    t.boolean  "domination"
+    t.boolean  "incalls"
+    t.boolean  "outcalls"
+    t.boolean  "duo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "articles", "users"
 end
