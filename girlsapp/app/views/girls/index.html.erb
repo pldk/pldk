@@ -1,0 +1,47 @@
+<!-- <p id="notice"><%= notice %></p>
+
+<% if user_signed_in? %>
+  Hello <%= current_user.email %>!
+  <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-danger" %>
+<% else %>
+  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+  <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success" %>
+<% end %> -->
+
+<h1>Listing Girls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>Age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @girls.each do |girl| %>
+      <tr>
+        <td><%= girl.name %></td>
+        <td><%= girl.city %></td>
+        <td><%= girl.age %></td>
+        <td><%= link_to 'Show', girl %></td>
+        <td><%= link_to 'Edit', edit_girl_path(girl) %></td>
+        <td><%= link_to 'Destroy', girl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Girl', new_girl_path %>
+
+<div class="container">
+  <div class="row">
+  <% @girls.each do |r| %>
+    <%= render "girl", girl: r %>
+  <% end %>
+  </div>
+</div>

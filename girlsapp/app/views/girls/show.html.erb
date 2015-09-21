@@ -1,0 +1,22 @@
+
+
+<h1><%= @girl.name %></h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @girl.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @girl.city %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @girl.age %>
+</p>
+
+<%= link_to 'Edit', edit_girl_path(@girl) %> |
+<%= link_to 'Back', girls_path %>
